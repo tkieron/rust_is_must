@@ -5,37 +5,30 @@
 #[allow(path_statements)]
 #[allow(unused_mut)]
 fn main() {
-    println!("Hello, world!");
-    for i in 0..10 {
-        println!("{i}. I have {oranges}", i=i, oranges=get_oranges(i));
+    // for loop of the range
+    for i in 1..11 {
+        // read it as element {0} and element {1} - so element 0 multiplied by element 0 = element 1
+        println!("{0} * {0} = {1}", i, i * i);
+    }
+    // for loop of the collection elements
+    let pets = ["cat", "dog", "rabbit", "hamster", "bear"];
+    for pet in pets.iter() {
+        // compare to the bear using the reference &"bear"
+        if pet == &"bear" {
+            println!("I don't like {}", pet);
+            continue;
+        }
+        println!("I love my {}", pet);
     }
 
-    // defined a tupple of two i32
-    let point: (i32, i32) = (1, 0);
-    // match the tupple
-    match point {
-        (0,0) => println!("origin"),
-        (0,y) => println!("x axis, y = {y}"),
-        (x,0) => println!("y axis, x = {x}"),
-        (x,y) => println!("({x}, {y})")
-    }
-
-}
-
-fn get_oranges(ammount: i32) -> &'static str {
-    return match ammount {
-        // match exact value
-        0 => "no oranges",
-        // match to on of the values
-        1|2 => "one or two oranges",
-        // match to a range
-        3..=7 => "a few oranges",
-        // default case - confitional
-        _ if (ammount % 2 == 0) => "even ammount of oranges",
-        // default case - all other not matched previously
-        _ => "a lot of oranges"
+    // a for loop with enumerate to get pos and element
+    for (pos, i) in (1..11).enumerate() {
+        let square = i * i;
+        let nb = pos;
+        println!("L.p. {0} -> {1} * {1} = {2}",nb, i, square);
     }
 }
+
 
 
 
