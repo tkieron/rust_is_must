@@ -5,29 +5,33 @@
 #[allow(path_statements)]
 #[allow(unused_mut)]
 fn main() {
-    // for loop of the range
-    for i in 1..11 {
-        // read it as element {0} and element {1} - so element 0 multiplied by element 0 = element 1
-        println!("{0} * {0} = {1}", i, i * i);
-    }
-    // for loop of the collection elements
-    let pets = ["cat", "dog", "rabbit", "hamster", "bear"];
-    for pet in pets.iter() {
-        // compare to the bear using the reference &"bear"
-        if pet == &"bear" {
-            println!("I don't like {}", pet);
-            continue;
-        }
-        println!("I love my {}", pet);
-    }
+    println!("get squares");
+    get_squares(3478);
+    println!("get cubes");
+    get_cubes(4938);
+}
 
-    // a for loop with enumerate to get pos and element
-    for (pos, i) in (1..11).enumerate() {
-        let square = i * i;
-        let nb = pos;
-        println!("L.p. {0} -> {1} * {1} = {2}",nb, i, square);
+fn get_squares(limit : i32) {
+    let mut x = 1;
+    // this loop will execute as long limit is reached
+    while x * x < limit {
+        println!("{0} * {0} = {1}", x, x * x);
+        x += 1;
     }
 }
+
+fn get_cubes(limit: i32) {
+    let mut x = 1;
+    // this loop will execute infinitely until break is called
+    loop {
+        println!("{0} * {0} * {0} = {1}", x, x * x * x);
+        x += 1;
+        if x * x * x > limit {
+            break;
+        }
+    }
+}
+
 
 
 
