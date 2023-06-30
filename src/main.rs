@@ -1,4 +1,3 @@
-use crate::Suit::{Clubs, Diamonds, Hearts, Spades};
 
 #[allow(unused_variables)]
 #[allow(unused_imports)]
@@ -6,41 +5,35 @@ use crate::Suit::{Clubs, Diamonds, Hearts, Spades};
 #[allow(path_statements)]
 #[allow(unused_mut)]
 fn main() {
-    print_choice(Hearts);
-    print_choice(Spades);
-    print_choice(Diamonds);
-    print_choice(Clubs);
+    println!("Hello, world!");
+    for i in 0..10 {
+        println!("{i}. I have {oranges}", i=i, oranges=get_oranges(i));
+    }
 
-    country(44);
-    country(34);
-    country(125);
-    country(-50);
+    // defined a tupple of two i32
+    let point: (i32, i32) = (1, 0);
+    // match the tupple
+    match point {
+        (0,0) => println!("origin"),
+        (0,y) => println!("x axis, y = {y}"),
+        (x,0) => println!("y axis, x = {x}"),
+        (x,y) => println!("({x}, {y})")
+    }
+
 }
 
-fn country(code: i32) {
-    let country = match code {
-        44 => "UK",
-        34 => "Spain",
-        7 => "RuZZia",
-        1..=990 => "Unknown",
-        _ => "Invalid"
-    };
-    println!("the country with code {} is {}", code, country);
-}
-
-enum Suit {
-    Clubs,
-    Diamonds,
-    Hearts,
-    Spades
-}
-
-fn print_choice(choice: Suit) {
-    match choice {
-        Hearts => println!("\u{2665}"),
-        Clubs => println!("\u{2663}"),
-        Diamonds => println!("\u{2666}"),
-        Spades => println!("\u{2660}"),
+fn get_oranges(ammount: i32) -> &'static str {
+    return match ammount {
+        // match exact value
+        0 => "no oranges",
+        // match to on of the values
+        1|2 => "one or two oranges",
+        // match to a range
+        3..=7 => "a few oranges",
+        // default case - confitional
+        _ if (ammount % 2 == 0) => "even ammount of oranges",
+        // default case - all other not matched previously
+        _ => "a lot of oranges"
     }
 }
 
